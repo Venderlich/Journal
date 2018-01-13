@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ButtonBar?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="journal.RootComponent.RootComponentController">
+   <top>
+       <ButtonBar>
+           <buttons>
+                <Button mnemonicParsing="false" onAction="#signOut" text="Deconnection" />
+           </buttons>
+       </ButtonBar>
+       <!--
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="userLbl" prefHeight="49.0" prefWidth="220.0" text="Bienvenue Utilisateur" />
+
+           </children>
+        </HBox>
+        -->
+    </top>
+    <center>
+        <fx:include source="../Login/Login.fxml"/>
+    </center>
+</BorderPane>
