@@ -10,7 +10,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import FXRouter.FXRouter;
+import com.google.inject.Inject;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,9 +22,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import journal.Routes;
 
 /**
  * FXML Controller class
@@ -28,33 +34,64 @@ import javafx.stage.Stage;
  * @author Tristan
  */
 public class RootComponentController implements Initializable {
+
     @FXML
-    private Label userLbl;
-    
+    private Pane routingNode;
+
     @FXML
     private BorderPane mainBorderPane;
+
+    @Inject
+    FXMLLoader loader;
+
+    @FXML
+    private void goToInsertFiliere(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.INSERT_FILIERE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToInsertMatiere(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.INSERT_MATIERE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToReadMatiere(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.READ_MATIERE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void logOut(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().goTo(Routes.LOGIN);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Initializes the controller class.
      */
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    public void GetUser(String user){
-        userLbl.setText(user);
+       // FXRouter.getInstance().bindRoutingNode(routingNode);
     }
-    
-    public void signOut(ActionEvent event){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            Pane root = loader.load(getClass().getResource("Login/Login.fxml").openStream());
-            mainBorderPane.setCenter(root);
-        } catch (IOException ex) {
-            Logger.getLogger(RootComponentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
+
 }

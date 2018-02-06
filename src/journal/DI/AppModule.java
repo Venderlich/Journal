@@ -7,10 +7,12 @@ package journal.DI;
 
 import com.google.inject.AbstractModule;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import javafx.fxml.FXMLLoader;
-import journal.AuthService;
-import journal.DummyAuthService;
-import journal.SqliteConnection;
+import journal.AuthService.AuthService;
+import journal.AuthService.SqliteAuthService;
 
 /**
  *
@@ -18,9 +20,9 @@ import journal.SqliteConnection;
  */
 public class AppModule extends AbstractModule {
     @Override
-    protected void configure() {
+    protected void configure()  {
         bind(FXMLLoader.class).toProvider(FXMLLoaderProvider.class);
-        bind(AuthService.class).to(DummyAuthService.class); 
-        bind(Connection.class).to(SqliteConnection.class);
+        bind(AuthService.class).to(SqliteAuthService.class);
+        bind(Connection.class).toProvider(SQLiteConnectionProvider.class);
     }
 }

@@ -5,19 +5,25 @@
  */
 package journal.Login;
 
+import FXRouter.FXRouter;
 import com.google.inject.Inject;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import journal.AuthService;
+import journal.AuthService.AuthService;
+import journal.AuthService.SqliteAuthService;
+import journal.Routes;
 
 /**
  * FXML Controller class
@@ -49,7 +55,8 @@ public class LoginController implements Initializable {
 
     public void login(ActionEvent event) {
         if (userIsLoggedIn()) {
-            isConnected.setText("Le nom d'utilisateur et le Mot de passe est valide");
+            isConnected.setText("Le nom d'utilisateur et le Mot de passe est correct");
+            goToRoot();
         } else {
             isConnected.setText("Le nom d'utilisateur et le Mot de passe est incorrect");
         }
@@ -61,6 +68,14 @@ public class LoginController implements Initializable {
         } catch (SQLException e) {
             isConnected.setText("OMG TA PAS DE BDD");
             return false;
+        }
+    }
+
+    public void goToRoot(){
+        try {
+            FXRouter.getInstance().goTo(Routes.ROOT_COMPONENT);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -11,19 +11,17 @@ import com.google.inject.Provider;
 import javafx.fxml.FXMLLoader;
 
 /**
- *
  * @author tc820073
  */
 public class FXMLLoaderProvider implements Provider<FXMLLoader> {
 
-    @Inject Injector injector;
+    @Inject
+    private Injector injector;
 
     @Override
     public FXMLLoader get() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setControllerFactory(p -> {
-            return injector.getInstance(p);
-        });
+        loader.setControllerFactory(injector::getInstance);
         return loader;
-}
+    }
 }
