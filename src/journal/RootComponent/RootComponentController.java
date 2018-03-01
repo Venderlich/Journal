@@ -75,6 +75,47 @@ public class RootComponentController implements Initializable {
     }
 
     @FXML
+    private void goToReadFiliere(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.READ_FILIERE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToInsertTypeDeCour(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.INSERT_TYPEDECOUR);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+
+    private void goToReadTypeDeCour(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.READ_TYPEDECOUR);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+
+    private void goToInsertParametre(ActionEvent event) throws Exception {
+        try {
+            FXRouter.getInstance().bindRoutingNode(routingNode);
+            FXRouter.getInstance().goTo(Routes.INSERT_PARAMETRE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     private void logOut(ActionEvent event) throws Exception {
         try {
             FXRouter.getInstance().goTo(Routes.LOGIN);

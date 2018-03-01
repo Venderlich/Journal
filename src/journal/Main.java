@@ -49,7 +49,11 @@ public class Main extends Application {
                 .when(Routes.ROOT_COMPONENT, "RootComponent/RootComponent.fxml")
                 .when(Routes.INSERT_FILIERE, "Filiere/GUI/CreateFiliere.fxml")
                 .when(Routes.INSERT_MATIERE, "Matiere/GUI/CreateMatiere.fxml")
+                .when(Routes.INSERT_TYPEDECOUR, "TypeDeCour/GUI/CreateTypeDeCour.fxml")
+                .when(Routes.INSERT_PARAMETRE, "Parametre/GUI/CreateParametre.fxml")
                 .when(Routes.READ_MATIERE, "Matiere/GUI/ReadMatiere.fxml")
+                .when(Routes.READ_FILIERE, "Filiere/GUI/ReadFiliere.fxml")
+                .when(Routes.READ_TYPEDECOUR, "TypeDeCour/GUI/ReadTypeDeCour.fxml")
                 .goTo(Routes.LOGIN);
     }
 }

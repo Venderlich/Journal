@@ -31,10 +31,14 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Filiere">
                 <MenuItem mnemonicParsing="false" text="Inserer" onAction="#goToInsertFiliere"/>
-                <MenuItem mnemonicParsing="false" text="Voir les Filiere"/>
+                <MenuItem mnemonicParsing="false" text="Voir les Filiere" onAction="#goToReadFiliere"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Parametre">
-                <MenuItem mnemonicParsing="false" text="Gerer les Parametre" />
+                <MenuItem mnemonicParsing="false" text="Initialiser les Parametre" onAction="#goToInsertParametre" />
+            </Menu>
+            <Menu mnemonicParsing="false" text="Type de Cour">
+                <MenuItem mnemonicParsing="false" text="Inserer un Type de Cour" onAction="#goToInsertTypeDeCour" />
+                <MenuItem mnemonicParsing="false" text="Voir les Type de Cour" onAction="#goToReadTypeDeCour"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Deconnexion">
                 <MenuItem mnemonicParsing="false" text="Deconnexion" onAction="#logOut"/>
