@@ -1,26 +1,27 @@
-package journal.Matiere.Service;
+package journal.TypeDeCour.Service;
 
 import journal.DI.SQLiteConnectionProvider;
+import journal.Filiere.Service.Filiere;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReadMatiere extends ArrayList {
+public class ReadTypeDeCour {
     SQLiteConnectionProvider conn = new SQLiteConnectionProvider();
 
-
-    private Matiere rsToMatiere(ResultSet rs) throws SQLException{
-        Matiere mat = new Matiere();
-        mat.setId(rs.getInt("ID"));
-        mat.setLabel(rs.getString("LabelMatiere"));
-        return mat;
+    private TypeDeCour rsToTypeDeCour(ResultSet rs) throws SQLException {
+        TypeDeCour tdc = new TypeDeCour();
+        tdc.setId(rs.getInt("ID"));
+        tdc.setLabel(rs.getString("LabelTDC"));
+        tdc.setRapport(rs.getDouble("Rapport"));
+        return tdc;
     }
 
-    public ArrayList<Matiere>  listMatiere() throws SQLException {
-        ArrayList<Matiere> listMatiere = new ArrayList<>();
-        String query = "select * from Matiere";
+    public ArrayList<TypeDeCour> listTypeDeCour() throws SQLException {
+        ArrayList<TypeDeCour> listTypeDeCour = new ArrayList<>();
+        String query = "select * from TypeDeCour";
         PreparedStatement preparedStatement = null;
         ResultSet result = null;
 
@@ -28,8 +29,9 @@ public class ReadMatiere extends ArrayList {
             preparedStatement = conn.get().prepareStatement(query);
             result = preparedStatement.executeQuery();
             while ( result.next() ) {
-                listMatiere.add(rsToMatiere(result));
+                listTypeDeCour.add(rsToTypeDeCour(result));
             }
+
         } catch (SQLException e) {
 
         } finally {
@@ -38,7 +40,6 @@ public class ReadMatiere extends ArrayList {
             preparedStatement.close();
             result.close();
         }
-        return  listMatiere;
+        return  listTypeDeCour;
     }
-
 }
